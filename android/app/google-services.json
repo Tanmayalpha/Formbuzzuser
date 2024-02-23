@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "194075267615",
+    "project_id": "farmbuz-bf128",
+    "storage_bucket": "farmbuz-bf128.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194075267615:android:9d84430828d595f1dbfb2a",
+        "android_client_info": {
+          "package_name": "com.farmbuzzzz.driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXPpXkc5YqbaaZ_Js76UhJdCYvNLUujos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194075267615:android:2f1cfca4eba9a76bdbfb2a",
+        "android_client_info": {
+          "package_name": "com.formbuxx.user"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXPpXkc5YqbaaZ_Js76UhJdCYvNLUujos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
