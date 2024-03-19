@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage>
                     _deliverPincode(),
                     _catList(),
                     _slider(),
-                     _section(),
+                    _section(),
                     _seller()
                   ],
                 ),
@@ -209,6 +209,7 @@ class _HomePageState extends State<HomePage>
   }
 
   _singleSection(int index) {
+    print(sectionList[index].title + "SECTI(O N TITUILER)");
     Color back;
     int pos = index % 5;
     if (pos == 0)
@@ -390,8 +391,8 @@ class _HomePageState extends State<HomePage>
         ? Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15, bottom: 15),
             child: GridView.count(
-              // mainAxisSpacing: 12,
-              // crossAxisSpacing: 12,
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
               padding: EdgeInsetsDirectional.only(top: 5),
               crossAxisCount: 2,
               shrinkWrap: true,
@@ -601,8 +602,6 @@ class _HomePageState extends State<HomePage>
                           );
   }
 
-
-
   Widget productItem(int secPos, int index, bool pad) {
     if (sectionList[secPos].productList!.length > index) {
       String? offPer;
@@ -678,7 +677,7 @@ class _HomePageState extends State<HomePage>
                           width: double.maxFinite,
                           imageErrorBuilder: (context, error, stackTrace) =>
                               erroWidget(double.maxFinite),
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                           placeholder: placeHolder(width),
                         ),
                       ),
@@ -1059,7 +1058,8 @@ class _HomePageState extends State<HomePage>
       context.read<HomeProvider>().setSecLoading(false);
     });
   }
-String? pincode ;
+
+  String? pincode;
   void getSetting() {
     CUR_USERID = context.read<SettingProvider>().userId;
     //print("")
@@ -1097,7 +1097,7 @@ String? pincode ;
         if (CUR_USERID != null) {
           REFER_CODE = getdata['data']['user_data'][0]['referral_code'];
 
-          pincode = getdata["data"]["user_data"][0][PINCODE] ;
+          pincode = getdata["data"]["user_data"][0][PINCODE];
 
           context
               .read<UserProvider>()
@@ -1516,15 +1516,15 @@ String? pincode ;
                                 ),
                               ),
                               TextFormField(
-                                keyboardType: TextInputType.text,
-                                textCapitalization: TextCapitalization.words,
+                                keyboardType: TextInputType.phone,
+                                maxLength: 6,
                                 validator: (val) => validatePincode(val!,
                                     getTranslated(context, 'PIN_REQUIRED')),
                                 onSaved: (String? value) {
                                   context
                                       .read<UserProvider>()
                                       .setPincode(value!);
-                                  pincode = value ;
+                                  pincode = value;
                                 },
                                 style: Theme.of(context)
                                     .textTheme
@@ -1616,11 +1616,9 @@ String? pincode ;
   }
 
   void getSlider() {
-   // Map map = Map();
+    // Map map = Map();
 
-    var parms = {
-      'pincode': pincode
-    };
+    var parms = {'pincode': pincode};
 
     apiBaseHelper.postAPICall(getSliderApi, parms).then((getdata) {
       bool error = getdata["error"];
@@ -1647,10 +1645,7 @@ String? pincode ;
   }
 
   void getCat() {
-    Map parameter = {
-      CAT_FILTER: "true",
-      'pincode':pincode
-    };
+    Map parameter = {CAT_FILTER: "true", 'pincode': pincode};
     apiBaseHelper.postAPICall(getCatApi, parameter).then((getdata) {
       bool error = getdata["error"];
       String? msg = getdata["message"];
@@ -1756,7 +1751,7 @@ String? pincode ;
         ZIPCODE: pin,
       };
       SettingProvider settingsProvider =
-      Provider.of<SettingProvider>(context, listen: false);
+          Provider.of<SettingProvider>(context, listen: false);
 
       settingsProvider.setPrefrence("ZIPCODE", pin);
     }

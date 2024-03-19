@@ -49,15 +49,15 @@ class _EditProfileState extends State<EditProfile> {
 
   Future<Null> _cropImage(image) async {
     CroppedFile? croppedFile = await ImageCropper().cropImage(
-        sourcePath: image,
-        aspectRatioPresets: Platform.isAndroid
-            ? [
-          CropAspectRatioPreset.square,
-        ]
-            : [
-          CropAspectRatioPreset.square,
-        ],
-       /* androidUiSettings: AndroidUiSettings(
+      sourcePath: image,
+      aspectRatioPresets: Platform.isAndroid
+          ? [
+              CropAspectRatioPreset.square,
+            ]
+          : [
+              CropAspectRatioPreset.square,
+            ],
+      /* androidUiSettings: AndroidUiSettings(
             toolbarTitle: 'ZuqZuq',
             toolbarColor: colors.primary,
             toolbarWidgetColor: Colors.white,
@@ -70,19 +70,18 @@ class _EditProfileState extends State<EditProfile> {
     if (croppedFile != null) {
       showToast("Uploading Image");
       _image = File(croppedFile.path);
-      setState(() {
-      });
-      UpdateUserModels? model =await uploadImage(typeImage == "pro"?"image":"bank_pass", _image!.path);
-       if(model!.error == false){
-         setState(() {
-           showToast(model.message);
-         });
-       }
-
+      setState(() {});
+      UpdateUserModels? model = await uploadImage(
+          typeImage == "pro" ? "image" : "bank_pass", _image!.path);
+      if (model!.error == false) {
+        setState(() {
+          showToast(model.message);
+        });
+      }
     }
   }
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -92,7 +91,7 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-      return false;
+        return false;
       },
       child: Scaffold(
         body: FutureBuilder(
@@ -102,9 +101,11 @@ class _EditProfileState extends State<EditProfile> {
                 var user = snapshot.data;
                 return Scaffold(
                   appBar: AppBar(
-                    leading: IconButton(onPressed: (){
-                      Navigator.pop(context , true);
-                    }, icon: Icon(Icons.arrow_back)),
+                    leading: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context, true);
+                        },
+                        icon: Icon(Icons.arrow_back)),
                     backgroundColor: Colors.white,
                     iconTheme: IconThemeData(color: colors.primary),
                     actions: [
@@ -119,7 +120,11 @@ class _EditProfileState extends State<EditProfile> {
                                   dob = user!.date![0].dob;
                                 });
                               },
-                              child: Text("Edit", style: TextStyle(fontWeight: FontWeight.bold , fontSize: 14 , color: colors.primary)))
+                              child: Text("Edit",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                      color: colors.primary)))
                           : TextButton(
                               onPressed: () async {
                                 if (dob != null) {
@@ -140,11 +145,17 @@ class _EditProfileState extends State<EditProfile> {
                                   } else {
                                     showToast(model.message);
                                   }
-                                }else{
+                                } else {
                                   showToast("Select Date");
                                 }
                               },
-                              child: Text("Save" , style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14 , color: colors.primary),))
+                              child: Text(
+                                "Save",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                    color: colors.primary),
+                              ))
                     ],
                     title: Text(
                       "Profile",
@@ -194,29 +205,92 @@ class _EditProfileState extends State<EditProfile> {
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.person),
-                                  title: Text("User Name"),
-                                  trailing: Text("${user!.date![0].username}"),
+                                  title: Text(
+                                    "User Name",
+                                    style: TextStyle(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black),
+                                  ),
+                                  trailing: Text(
+                                    "${user!.date![0].username}",
+                                    style: TextStyle(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black),
+                                  ),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.email),
-                                  title: Text("Email Id"),
-                                  trailing: Text("${user!.date![0].email}"),
+                                  title: Text("Email Id",
+                                      style: TextStyle(
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Colors.white
+                                              : Colors.black)),
+                                  trailing: Text(
+                                    "${user!.date![0].email}",
+                                    style: TextStyle(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black),
+                                  ),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.call),
-                                  title: Text("Phone Number"),
-                                  trailing: Text("${user!.date![0].mobile}"),
+                                  title: Text("Phone Number",
+                                      style: TextStyle(
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Colors.white
+                                              : Colors.black)),
+                                  trailing: Text(
+                                    "${user!.date![0].mobile}",
+                                    style: TextStyle(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black),
+                                  ),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.accessibility),
-                                  title: Text("Gender"),
-                                  trailing: Text("${user!.date![0].gender}"),
+                                  title: Text("Gender",
+                                      style: TextStyle(
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Colors.white
+                                              : Colors.black)),
+                                  trailing: Text(
+                                    "${user!.date![0].gender}",
+                                    style: TextStyle(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black),
+                                  ),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.date_range),
-                                  title: Text("Date Of Birth"),
+                                  title: Text("Date Of Birth",
+                                      style: TextStyle(
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.dark
+                                              ? Colors.white
+                                              : Colors.black)),
                                   trailing: user!.date![0].dob != null
-                                      ? Text("${user!.date![0].dob}")
+                                      ? Text(
+                                          "${user!.date![0].dob}",
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                          .brightness ==
+                                                      Brightness.dark
+                                                  ? Colors.white
+                                                  : Colors.black),
+                                        )
                                       : TextButton(
                                           onPressed: () {
                                             setState(() {
@@ -286,18 +360,28 @@ class _EditProfileState extends State<EditProfile> {
 
   getDob() {
     DateTime date = selectedDate;
-    return Padding(
-      padding: const EdgeInsets.only(left: 13),
-      child: ListTile(
-        onTap: () {
-          _selectDate(context);
-        },
-        title: Text("Select Date Of Birth"),
-        subtitle: dob != null
-            ? Text(dob)
-            : Text("dd-mm-yy"),
-        trailing: Icon(Icons.calendar_today_outlined),
-      ),
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 0),
+      onTap: () {
+        _selectDate(context);
+      },
+      title: Text("Select Date Of Birth"),
+      subtitle: dob != null
+          ? Text(
+              dob,
+              style: TextStyle(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white
+                      : Colors.black),
+            )
+          : Text(
+              'dd-mm-yy',
+              style: TextStyle(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white
+                      : Colors.black),
+            ),
+      trailing: Icon(Icons.calendar_today_outlined),
     );
   }
 
@@ -312,12 +396,18 @@ class _EditProfileState extends State<EditProfile> {
             data: Theme.of(context).copyWith(
               colorScheme: ColorScheme.light(
                 primary: Color(0xffFF00FF), // header background color
-                onPrimary: Colors.black, // header text color
-                onSurface: Colors.black, // body text color
+                onPrimary: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    : Colors.black, // header text color
+                onSurface: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.white
+                    : Colors.black, // body text color
               ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
-                  primary: Colors.black, // button text color
+                  primary: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white
+                      : Colors.black, // button text color
                 ),
               ),
             ),

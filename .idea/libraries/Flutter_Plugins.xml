@@ -47,7 +47,6 @@
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.1.0" />
       <root url="file://$PROJECT_DIR$/downloads_path_provider" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/package_info_plus_windows-1.0.5" />
-      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider-2.0.14" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_core-2.9.0" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_paystack-a4a33c3dd0a12f46d655a2e63d11e9f20ba82d01" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher-6.1.10" />
@@ -73,11 +72,12 @@
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/wakelock_macos-0.4.0" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/wakelock-0.6.2" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/wakelock_web-0.4.0" />
-      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/fluttertoast-8.2.1" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/rate_my_app-1.1.4" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_linux-2.1.10" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_html_to_pdf-0.7.0" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/speech_to_text_macos-1.0.2" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider-2.0.15" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/fluttertoast-8.2.4" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

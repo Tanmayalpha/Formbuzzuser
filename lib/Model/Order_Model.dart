@@ -14,7 +14,7 @@ class OrderModel {
       subTotal,
       payable,
       address,
-      //  taxAmt,
+        taxAmt,
       taxPer,
       orderDate,
       orderNote,
@@ -50,7 +50,7 @@ class OrderModel {
       this.payable,
       this.address,
       this.taxPer,
-      // this.taxAmt,
+       this.taxAmt,
       this.orderDate,
       this.dateTime,
       this.itemList,
@@ -102,7 +102,7 @@ class OrderModel {
         subTotal: parsedJson[TOTAL],
         payable: parsedJson[TOTAL_PAYABLE],
         address: parsedJson[ADDRESS] ?? "",
-        //   taxAmt: parsedJson[TOTAL_TAX_AMT],
+           taxAmt: parsedJson[TOTAL_TAX_AMT],
         taxPer: parsedJson[TOTAL_TAX_PER],
         dateTime: parsedJson[DATE_ADDED],
         isCancleable: parsedJson[ISCANCLEABLE],
@@ -145,6 +145,8 @@ class OrderItem {
       rtnReqSubmitted,
       varient_values,
       deliveryBoyId,
+      deliveryBoyName,
+      deliveryBoyNumber,
       attr_name,
       productId,
       item_otp,
@@ -191,6 +193,8 @@ class OrderItem {
     this.courier_agency,
     this.tracking_id,
     this.tracking_url,
+    this.deliveryBoyName,
+    this.deliveryBoyNumber,
   });
 
   factory OrderItem.fromJson(Map<String, dynamic> json) {
@@ -232,6 +236,8 @@ class OrderItem {
       courier_agency: json[COURIER_AGENCY] ?? "",
       tracking_id: json[TRACKING_ID] ?? "",
       tracking_url: json[TRACKING_URL] ?? "",
+      deliveryBoyName: json['delivery_boy_name'] ?? "",
+      deliveryBoyNumber: json['delivery_boy_mobile'] ?? "",
     );
   }
 }

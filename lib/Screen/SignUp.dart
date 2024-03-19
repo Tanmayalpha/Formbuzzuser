@@ -58,7 +58,9 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       referCode,
       friendCode;
   FocusNode? nameFocus,
-      emailFocus,cityFocous,pinFocus,
+      emailFocus,
+      cityFocous,
+      pinFocus,
       passFocus = FocusNode(),
       referFocus = FocusNode();
   bool _isNetworkAvail = true;
@@ -114,7 +116,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
     }
     return false;
   }
-
 
   @override
   void dispose() {
@@ -229,9 +230,9 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       await buttonController!.reverse();
       if (!error) {
         // setSnackbar(getTranslated(context, 'REGISTER_SUCCESS_MSG')!);
-        Fluttertoast.showToast(msg: getTranslated(context, 'REGISTER_SUCCESS_MSG')!,
-            backgroundColor: colors.primary
-        );
+        Fluttertoast.showToast(
+            msg: getTranslated(context, 'REGISTER_SUCCESS_MSG')!,
+            backgroundColor: colors.primary);
         var i = getdata["data"][0];
 
         id = i[ID];
@@ -333,7 +334,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
     );
   }
 
-
   setCity() {
     return Padding(
       padding: EdgeInsetsDirectional.only(
@@ -344,7 +344,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       child: TextFormField(
         onTap: () {
           showPlacePicker();
-
         },
         readOnly: true,
         keyboardType: TextInputType.text,
@@ -355,9 +354,8 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             color: Theme.of(context).colorScheme.fontColor,
             fontWeight: FontWeight.normal),
         validator: (val) => validateField(
-            val!,
-            getTranslated(context, 'CITY_REQUIRED'),
-
+          val!,
+          getTranslated(context, 'CITY_REQUIRED'),
         ),
         onSaved: (String? value) {
           city = value;
@@ -389,13 +387,14 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
           // ),
           enabledBorder: UnderlineInputBorder(
             borderSide:
-            BorderSide(color: Theme.of(context).colorScheme.fontColor),
+                BorderSide(color: Theme.of(context).colorScheme.fontColor),
             borderRadius: BorderRadius.circular(10.0),
           ),
         ),
       ),
     );
   }
+
   setPinCode() {
     return Padding(
       padding: EdgeInsetsDirectional.only(
@@ -406,7 +405,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       child: TextFormField(
         onTap: () {
           pinCodeDialog();
-
         },
         readOnly: true,
         keyboardType: TextInputType.text,
@@ -419,7 +417,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
         validator: (val) => validateField(
           val!,
           getTranslated(context, 'PINCODESELECT_LBL'),
-
         ),
         onSaved: (String? value) {
           city = value;
@@ -451,7 +448,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
           // ),
           enabledBorder: UnderlineInputBorder(
             borderSide:
-            BorderSide(color: Theme.of(context).colorScheme.fontColor),
+                BorderSide(color: Theme.of(context).colorScheme.fontColor),
             borderRadius: BorderRadius.circular(10.0),
           ),
         ),
@@ -840,7 +837,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             : noInternet(context));
   }
 
-
   Future<void> generateReferral() async {
     String refer = getRandomString(8);
 
@@ -915,7 +911,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
                       setPass(),
                       gender(),
                       // getDob(),
-                       setRefer(),
+                      setRefer(),
                       //showPass(),
                       //birthDate(),
                       // InkWell(
@@ -1064,30 +1060,27 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
 
   _selectDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(1970),
-      lastDate: DateTime.now(),
-      builder: ( context,  child){
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: Color(0xffFF00FF), // header background color
-              onPrimary: Colors.black, // header text color
-              onSurface: Colors.black, // body text color
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                primary: Colors.black, // button text color
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(1970),
+        lastDate: DateTime.now(),
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: ColorScheme.light(
+                primary: Color(0xffFF00FF), // header background color
+                onPrimary: Colors.black, // header text color
+                onSurface: Colors.black, // body text color
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  primary: Colors.black, // button text color
+                ),
               ),
             ),
-          ),
-          child: child!,
-        );
-      }
-
-
-    );
+            child: child!,
+          );
+        });
     if (selected != null && selected != selectedDate)
       setState(() {
         selectedDate = selected;
@@ -1095,31 +1088,17 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
   }
 
   void showPlacePicker() async {
-    LocationResult result = await Navigator.of(context).push(
-        MaterialPageRoute(
-            builder: (context) =>
-                PlacePicker(
-
-
-                    "AIzaSyDPsdTq-a4AHYHSNvQsdAlZgWvRu11T9pM"))
-
-    );
+    LocationResult result = await Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            PlacePicker("AIzaSyCBiZkX5n-WccQRkQ_s3yX3gd_QD7yFlrs")));
 
     // Check if the user picked a place
     if (result != null) {
-
       setState(() {
-
-        citycontroller.text= result.city!.name.toString();
-
+        citycontroller.text = result.city!.name.toString();
       });
     }
   }
-
-
-
-
-
 
   pinCodeDialog() {
     showDialog(
@@ -1147,7 +1126,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
                           .textTheme
                           .subtitle1!
                           .copyWith(
-                          color: Theme.of(context).colorScheme.fontColor),
+                              color: Theme.of(context).colorScheme.fontColor),
                     ),
                   ),
                   TextField(
@@ -1159,10 +1138,10 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.fromLTRB(0, 15.0, 0, 15.0),
                       prefixIcon:
-                      Icon(Icons.search, color: colors.primary, size: 17),
+                          Icon(Icons.search, color: colors.primary, size: 17),
                       hintText: getTranslated(context, 'SEARCH_LBL'),
                       hintStyle:
-                      TextStyle(color: colors.primary.withOpacity(0.5)),
+                          TextStyle(color: colors.primary.withOpacity(0.5)),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Theme.of(context).colorScheme.white),
@@ -1177,25 +1156,25 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
                   Divider(color: Theme.of(context).colorScheme.lightBlack),
                   pinLoading
                       ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 50.0),
-                      child: CircularProgressIndicator(),
-                    ),
-                  )
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 50.0),
+                            child: CircularProgressIndicator(),
+                          ),
+                        )
                       : (pinSearchLIst.length > 0)
-                      ? Flexible(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: getPinCodeList(),
-                      ),
-                    ),
-                  )
-                      : Padding(
-                    padding:
-                    const EdgeInsets.symmetric(vertical: 20.0),
-                    child: getNoItem(context),
-                  )
+                          ? Flexible(
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: getPinCodeList(),
+                                ),
+                              ),
+                            )
+                          : Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 20.0),
+                              child: getNoItem(context),
+                            )
                 ],
               ),
             );
@@ -1204,50 +1183,50 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       },
     );
   }
-  int? selPinPos = -1 ;
+
+  int? selPinPos = -1;
   User? selPinCode;
   getPinCodeList() {
     return pinSearchLIst
         .asMap()
         .map(
           (index, element) => MapEntry(
-        index,
-        InkWell(
-          onTap: () {
-            if (mounted) {
-              setState(
+            index,
+            InkWell(
+              onTap: () {
+                if (mounted) {
+                  setState(
                     () {
-                  //selectedDelBoy = index;
-                  selPinPos = index;
+                      //selectedDelBoy = index;
+                      selPinPos = index;
 
-                  Navigator.of(context).pop();
-                  pinCodeController.text = pinSearchLIst[selPinPos!].zipCode ??'' ;
-                  selPinCode = pinSearchLIst[selPinPos!];
+                      Navigator.of(context).pop();
+                      pinCodeController.text =
+                          pinSearchLIst[selPinPos!].zipCode ?? '';
+                      selPinCode = pinSearchLIst[selPinPos!];
 
-                  //pincode = selArea!.id;
-                  //pincodeC!.text = selArea!.pincode!;
-                },
-              );
-            }
-          },
-          child: Container(
-            width: double.maxFinite,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                pinSearchLIst[index].zipCode ?? '',
-                style: Theme.of(context).textTheme.subtitle2,
+                      //pincode = selArea!.id;
+                      //pincodeC!.text = selArea!.pincode!;
+                    },
+                  );
+                }
+              },
+              child: Container(
+                width: double.maxFinite,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    pinSearchLIst[index].zipCode ?? '',
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    )
+        )
         .values
         .toList();
   }
-
-
 
   Future<void> pinSearch(String searchText) async {
     pinSearchLIst.clear();
@@ -1261,9 +1240,9 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
     if (mounted) pinCodeState!(() {});
   }
 
-  List <User> pinList= [];
-  List <User> pinSearchLIst= [];
-  bool pinLoading = true ;
+  List<User> pinList = [];
+  List<User> pinSearchLIst = [];
+  bool pinLoading = true;
   StateSetter? pinCodeState;
 
   Future<void> getPinCode() async {
@@ -1289,11 +1268,8 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       pinLoading = false;
       if (pinCodeState != null) pinCodeState!(() {});
       if (mounted) setState(() {});
-
     } on TimeoutException catch (_) {
       setSnackbar(getTranslated(context, 'somethingMSg')!);
     }
   }
-
-
 }

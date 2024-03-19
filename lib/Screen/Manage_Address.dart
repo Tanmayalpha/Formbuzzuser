@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 
 import '../Helper/AppBtn.dart';
@@ -212,7 +213,7 @@ class StateAddress extends State<ManageAddress> with TickerProviderStateMixin {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: RefreshIndicator(
-                                       color: colors.primary,
+                                    color: colors.primary,
                                     key: _refreshIndicatorKey,
                                     onRefresh: _refresh,
                                     child: ListView.builder(
@@ -306,6 +307,27 @@ class StateAddress extends State<ManageAddress> with TickerProviderStateMixin {
     }
   }
 
+  Future<void> updatecheck(String id) async {
+    var headers = {
+      'Cookie': 'ci_session=efd8f22f6ac85dd71a7e754f63eec29255353fed'
+    };
+    var request = MultipartRequest(
+        'POST',
+        Uri.parse(
+            'https://developmentalphawizz.com/farmbuz/app/v1/api/select_address'));
+    request.fields.addAll({'address_id': id});
+
+    request.headers.addAll(headers);
+
+    StreamedResponse response = await request.send();
+    var json = jsonDecode(await response.stream.bytesToString());
+    if (response.statusCode == 200) {
+      Fluttertoast.showToast(msg: json['message'].toString());
+    } else {
+      Fluttertoast.showToast(msg: 'Something went Wrong!');
+    }
+  }
+
   addressItem(int index) {
     return Card(
       elevation: 0.2,
@@ -340,6 +362,7 @@ class StateAddress extends State<ManageAddress> with TickerProviderStateMixin {
 
               addModel.forEach((element) => element.isSelected = false);
               addModel[index].isSelected = true;
+              updatecheck(addressList[index].id.toString());
             });
           }
         },

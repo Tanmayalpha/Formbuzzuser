@@ -34,7 +34,7 @@ dependencies:
   flutter_local_notifications: ^12.0.1+1
 #  flutter_local_notifications: ^12.0.3
 #  flutter_local_notifications: ^9.8.0+1
-  path_provider: ^2.0.2
+  path_provider: ^2.0.15
 #  firebase_messaging: ^14.0.3
   firebase_messaging: ^14.0.0
   firebase_core: ^2.1.1
@@ -78,7 +78,7 @@ dependencies:
   image_picker_gallery_camera: ^0.2.2
   image_cropper: ^3.0.1
   image_picker: ^0.7.5
-  fluttertoast: ^8.0.9
+  fluttertoast: ^8.2.4
   gender_picker: ^1.1.0
   place_picker: ^0.10.0
   rate_my_app: ^1.1.4
@@ -89,6 +89,7 @@ dependencies:
     git:
       url: https://github.com/definitelyme/flutter_paystack.git
       ref: a4a33c3dd0a12f46d655a2e63d11e9f20ba82d01
+  dio: ^5.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

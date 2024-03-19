@@ -209,6 +209,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.3"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      sha256: "49af28382aefc53562459104f64d16b9dfd1e8ef68c862d5af436cc8356ce5a8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.4.1"
   downloads_path_provider_28:
     dependency: "direct main"
     description:
@@ -481,10 +489,10 @@ packages:
     dependency: "direct main"
     description:
       name: fluttertoast
-      sha256: "2f9c4d3f4836421f7067a28f8939814597b27614e021da9d63e5d3fb6e212d25"
+      sha256: dfdde255317af381bfc1c486ed968d5a43a2ded9c931e87cbecd88767d6a71c1
       url: "https://pub.dev"
     source: hosted
-    version: "8.2.1"
+    version: "8.2.4"
   gender_picker:
     dependency: "direct main"
     description:
@@ -889,10 +897,10 @@ packages:
     dependency: "direct main"
     description:
       name: path_provider
-      sha256: c7edf82217d4b2952b2129a61d3ad60f1075b9299e629e149a8d2e39c2e6aad4
+      sha256: "3087813781ab814e4157b172f1a11c46be20179fcc9bea043e0fba36bc0acaa2"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.14"
+    version: "2.0.15"
   path_provider_android:
     dependency: transitive
     description:

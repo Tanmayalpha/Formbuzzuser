@@ -1,13 +1,13 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/alphawizz/fvm/versions/2.8.1"
-export "FLUTTER_APPLICATION_PATH=/home/alphawizz/Desktop/Pragati-Github_New/zuq_zuq_user/downloads_path_provider/example"
+export "FLUTTER_ROOT=C:\Devlopment\flutter"
+export "FLUTTER_APPLICATION_PATH=C:\Users\Alphawizz\Documents\GitHub\Formbuzzuser\downloads_path_provider\example"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=lib/main.dart"
+export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"
 export "DART_OBFUSCATION=false"
-export "TRACK_WIDGET_CREATION=false"
+export "TRACK_WIDGET_CREATION=true"
 export "TREE_SHAKE_ICONS=false"
-export "PACKAGE_CONFIG=.packages"
+export "PACKAGE_CONFIG=.dart_tool/package_config.json"

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
@@ -9,89 +8,77 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 
 class UserMapScreen extends StatefulWidget {
-  String?userlat;
-  String?userlang;
-  String ?DriverId;
-  UserMapScreen({this.userlat,this.userlang,this.DriverId});
+  String? userlat;
+  String? userlang;
+  String? DriverId;
+  UserMapScreen({this.userlat, this.userlang, this.DriverId});
   @override
   _UserMapScreenState createState() => _UserMapScreenState();
 }
 
 class _UserMapScreenState extends State<UserMapScreen> {
-
   LatLng driverLocation = LatLng(22.7177, 75.8545);
-  LatLng userLocation = LatLng(22.7281,  75.8042);
+  LatLng userLocation = LatLng(22.7281, 75.8042);
 
-  BitmapDescriptor? myIcon ;
+  BitmapDescriptor? myIcon;
 
   List<LatLng> routeCoordinates = [];
 
   List<Polyline> polyLines = [];
 
-  late double bearing ;
-  double dNewLat = 0.0 ;
-  double dNewLong = 0.0 ;
+  late double bearing;
+  double dNewLat = 0.0;
+  double dNewLong = 0.0;
 
-  CollectionReference collectionRef=FirebaseFirestore.instance.collection("driverlocation");
+  CollectionReference collectionRef =
+      FirebaseFirestore.instance.collection("driverlocation");
 
   Future<void> getdatadriverData() async {
-
-
     try {
-
-      DocumentSnapshot document = await collectionRef.doc('${widget.DriverId}').get();
+      DocumentSnapshot document =
+          await collectionRef.doc('${widget.DriverId}').get();
       // DocumentSnapshot document = await collectionRef.doc('907').get();
 
       if (document.exists) {
-
         print('data prasent');
 
+        // dNewLat = 22.718670;
+        // dNewLong =75.855710;
 
-      // dNewLat = 22.718670;
-      // dNewLong =75.855710;
+        dNewLat = document.get('lat'); // Replace with your field name
+        dNewLong = document.get('long'); // Replace with your field name
 
-      dNewLat = document.get('lat'); // Replace with your field name
-      dNewLong = document.get('long'); // Replace with your field name
+        print("======================lat from firebase ${dNewLat}");
+        print("======================lang from firebase ${dNewLong}");
+        driverLocation = LatLng(dNewLat, dNewLong);
 
+        bearing = await getBearing(
+            LatLng(dNewLat, dNewLong),
+            LatLng(double.parse(widget.userlat ?? '0.0'),
+                double.parse(widget.userlang ?? '0.0')));
 
-      print("======================lat from firebase ${dNewLat}");
-      print("======================lang from firebase ${dNewLong}");
-      driverLocation = LatLng(dNewLat, dNewLong);
+        init();
 
-      bearing = await getBearing( LatLng(dNewLat, dNewLong),  LatLng(double.parse(widget.userlat ?? '0.0'),double.parse(widget.userlang ?? '0.0')));
-
-
-
-
-      init();
-
-      setState(() {
-
-      });
-
-        }
-
+        setState(() {});
+      }
     } catch (e) {
-
-
       // print('Error adding data: $e');
     }
-
   }
+
   late Timer _timer;
 
   void _startTimer() {
-
     _timer = Timer.periodic(Duration(seconds: 3), (timer) async {
       getdatadriverData();
     });
   }
 
-
   @override
   void initState() {
     super.initState();
-    userLocation = LatLng(double.parse(widget.userlat.toString() ?? '0.0'),double.parse(widget.userlang ?? '0.0'));
+    userLocation = LatLng(double.parse(widget.userlat.toString() ?? '0.0'),
+        double.parse(widget.userlang ?? '0.0'));
 
     print('driver id================${widget.DriverId}');
 
@@ -99,20 +86,19 @@ class _UserMapScreenState extends State<UserMapScreen> {
     print('ulang================${widget.userlang}');
     _startTimer();
 
-
-    BitmapDescriptor.fromAssetImage(
-        const ImageConfiguration(size: Size(5, 5)), 'assets/images/driver.png')
+    BitmapDescriptor.fromAssetImage(const ImageConfiguration(size: Size(5, 5)),
+            'assets/images/driver.png')
         .then((onValue) {
       myIcon = onValue;
     });
-
   }
 
-  init() async{
+  init() async {
     var encodedPoly = await getRouteCoordinates(
-        LatLng(dNewLat,  dNewLong),
+        LatLng(dNewLat, dNewLong),
         // const LatLng(22.7281,  75.8042));
-        LatLng(double.parse(widget.userlat??'0.0'),double.parse(widget.userlang ?? '0.0')));
+        LatLng(double.parse(widget.userlat ?? '0.0'),
+            double.parse(widget.userlang ?? '0.0')));
 
     polyLines.add(Polyline(
         polylineId: const PolylineId("1"), //pass any string here
@@ -121,53 +107,41 @@ class _UserMapScreenState extends State<UserMapScreen> {
         points: convertToLatLng(decodePoly(encodedPoly)),
         color: Colors.blueAccent));
 
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        body:
-
-
-        dNewLat==0.0?Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-
-            child: Center(child: CircularProgressIndicator())):
-        GoogleMap(
-          initialCameraPosition: CameraPosition(
-            target: userLocation,
-            zoom: 15.0,
-          ),
-          markers: <Marker>{
-            Marker(
-                markerId: const MarkerId('userMarker'),
-                position: driverLocation,
-                icon: myIcon ?? BitmapDescriptor.defaultMarker,
-                anchor: const Offset(0.5, 0.5),
-                flat: true,
-                rotation: bearing,
-                draggable: false),
-            Marker(
-              markerId: const MarkerId('driverMarker'),
-              position: userLocation,
-              icon: BitmapDescriptor.defaultMarkerWithHue(
-                  BitmapDescriptor.hueRed),
-            ),
-          },
-          polylines: Set<Polyline>.of(
-              polyLines)
-
-          ,
-        )
-    );
+        body: dNewLat == 0.0
+            ? Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Center(child: CircularProgressIndicator()))
+            : GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: userLocation,
+                  zoom: 15.0,
+                ),
+                markers: <Marker>{
+                  Marker(
+                      markerId: const MarkerId('userMarker'),
+                      position: driverLocation,
+                      icon: myIcon ?? BitmapDescriptor.defaultMarker,
+                      anchor: const Offset(0.5, 0.5),
+                      flat: true,
+                      rotation: bearing,
+                      draggable: false),
+                  Marker(
+                    markerId: const MarkerId('driverMarker'),
+                    position: userLocation,
+                    icon: BitmapDescriptor.defaultMarkerWithHue(
+                        BitmapDescriptor.hueRed),
+                  ),
+                },
+                polylines: Set<Polyline>.of(polyLines),
+              ));
   }
-
-
 
   static List<LatLng> convertToLatLng(List points) {
     List<LatLng> result = <LatLng>[];
@@ -181,15 +155,14 @@ class _UserMapScreenState extends State<UserMapScreen> {
 
   Future<String> getRouteCoordinates(LatLng l1, LatLng l2) async {
     String url =
-    // "https://maps.googleapis.com/maps/api/directions/json?origin=${l1.latitude},${l1.longitude}&destination=${l2.latitude},${l2.longitude}&key=AIzaSyDi_XlHtopewZHtpWWxIO-EQ7mCegHr5o0";
-        "https://maps.googleapis.com/maps/api/directions/json?origin=${l1.latitude},${l1.longitude}&destination=${l2.latitude},${l2.longitude}&key=AIzaSyDPsdTq-a4AHYHSNvQsdAlZgWvRu11T9pM";
+        // "https://maps.googleapis.com/maps/api/directions/json?origin=${l1.latitude},${l1.longitude}&destination=${l2.latitude},${l2.longitude}&key=AIzaSyDi_XlHtopewZHtpWWxIO-EQ7mCegHr5o0";
+        "https://maps.googleapis.com/maps/api/directions/json?origin=${l1.latitude},${l1.longitude}&destination=${l2.latitude},${l2.longitude}&key=AIzaSyCBiZkX5n-WccQRkQ_s3yX3gd_QD7yFlrs";
     http.Response response = await http.get(Uri.parse(url));
     print(url);
     Map values = jsonDecode(response.body);
     print("Predictions " + values.toString());
     return values["routes"][0]["overview_polyline"]["points"];
   }
-
 
   static List decodePoly(String poly) {
     var list = poly.codeUnits;
@@ -225,35 +198,25 @@ class _UserMapScreenState extends State<UserMapScreen> {
     return lList;
   }
 
-
   double getBearing(LatLng begin, LatLng end) {
-
     double lat = (begin.latitude - end.latitude).abs();
 
     double lng = (begin.longitude - end.longitude).abs();
 
-
-
     if (begin.latitude < end.latitude && begin.longitude < end.longitude) {
-
       return (atan(lng / lat) * (180 / pi));
-
-    } else if (begin.latitude >= end.latitude && begin.longitude < end.longitude) {
-
+    } else if (begin.latitude >= end.latitude &&
+        begin.longitude < end.longitude) {
       return (90 - (atan(lng / lat) * (180 / pi))) + 90;
-
-    } else if (begin.latitude >= end.latitude && begin.longitude >= end.longitude) {
-
+    } else if (begin.latitude >= end.latitude &&
+        begin.longitude >= end.longitude) {
       return (atan(lng / lat) * (180 / pi)) + 180;
-
-    } else if (begin.latitude < end.latitude && begin.longitude >= end.longitude) {
-
+    } else if (begin.latitude < end.latitude &&
+        begin.longitude >= end.longitude) {
       return (90 - (atan(lng / lat) * (180 / pi))) + 270;
-
     }
 
     return -1;
-
   }
 
   void dispose() {

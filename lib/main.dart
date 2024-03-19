@@ -29,7 +29,6 @@ import 'Screen/Dashboard.dart';
 import 'Screen/SignUp.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await _requestLocationPermission();
   await Firebase.initializeApp();
@@ -40,14 +39,14 @@ void main() async {
     statusBarColor: Colors.transparent, // status bar color
   ));
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  getToken(){
+  getToken() {
     FirebaseMessaging.instance.getToken().then((value) {
-      String  fcmToken = value!;
-
+      String fcmToken = value!;
 
       print("fcm is ${fcmToken}");
     });
- }
+  }
+
   runApp(
     ChangeNotifierProvider<ThemeNotifier>(
       create: (BuildContext context) {
@@ -71,6 +70,7 @@ void main() async {
     ),
   );
 }
+
 Future<void> _requestLocationPermission() async {
   // Check if the permission is already granted
   if (await Permission.location.isGranted) {
@@ -88,6 +88,7 @@ Future<void> _requestLocationPermission() async {
     // Handle the denial, for example, show a message or disable location-based features
   }
 }
+
 Future<void> initializedDownload() async {
   await FlutterDownloader.initialize(debug: false);
 }
@@ -216,10 +217,9 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             initialRoute: '/',
             routes: {
-             '/': (context) => Splash(),
+              '/': (context) => Splash(),
               //'/': (context) => SignUp(),
-             '/home': (context) =>Dashboard(),
-
+              '/home': (context) => Dashboard(),
             },
             darkTheme: ThemeData(
               canvasColor: colors.darkColor,
@@ -238,7 +238,7 @@ class _MyAppState extends State<MyApp> {
               iconTheme:
                   Theme.of(context).iconTheme.copyWith(color: colors.secondary),
               textTheme: TextTheme(
-                      headline6: TextStyle(
+                      bodyText1: TextStyle(
                         color: Theme.of(context).colorScheme.fontColor,
                         fontWeight: FontWeight.w600,
                       ),
@@ -251,4 +251,5 @@ class _MyAppState extends State<MyApp> {
           ));
     }
   }
+  
 }
