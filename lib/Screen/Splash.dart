@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Screen/Intro_Slider.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Screen/Intro_Slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

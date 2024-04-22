@@ -3,20 +3,20 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:eshop_multivendor/Helper/ApiBaseHelper.dart';
-import 'package:eshop_multivendor/Helper/Color.dart';
-import 'package:eshop_multivendor/Helper/Public%20Api/api.dart';
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Helper/String.dart';
-import 'package:eshop_multivendor/Model/UserDetails.dart';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
-import 'package:eshop_multivendor/Screen/Customer_Support.dart';
-import 'package:eshop_multivendor/Screen/MyTransactions.dart';
-import 'package:eshop_multivendor/Screen/ReferEarn.dart';
-import 'package:eshop_multivendor/Screen/SendOtp.dart';
-import 'package:eshop_multivendor/Screen/Setting.dart';
-import 'package:eshop_multivendor/Screen/Login.dart';
+import 'package:formbuzzuser/Helper/ApiBaseHelper.dart';
+import 'package:formbuzzuser/Helper/Color.dart';
+import 'package:formbuzzuser/Helper/Public%20Api/api.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Helper/String.dart';
+import 'package:formbuzzuser/Model/UserDetails.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Screen/Customer_Support.dart';
+import 'package:formbuzzuser/Screen/MyTransactions.dart';
+import 'package:formbuzzuser/Screen/ReferEarn.dart';
+import 'package:formbuzzuser/Screen/SendOtp.dart';
+import 'package:formbuzzuser/Screen/Setting.dart';
+import 'package:formbuzzuser/Screen/Login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
@@ -532,6 +532,10 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             ? Container()
             : _getDrawerItem(getTranslated(context, 'LOGOUT')!,
                 'assets/images/pro_logout.svg'),
+        CUR_USERID == "" || CUR_USERID == null
+            ? Container() :
+        _getDrawerItem(getTranslated(context, 'DELETE_ACCOUNT')!,
+            'assets/images/pro_share.svg'),
       ],
     );
   }
@@ -684,6 +688,10 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
           } else if (title == getTranslated(context, 'CHANGE_LANGUAGE_LBL')) {
             openChangeLanguageBottomSheet();
           }
+          else if(title==getTranslated(context, 'DELETE_ACCOUNT'))
+            {
+              deleteAccountDailog();
+            }
         },
       ),
     );
@@ -909,6 +917,56 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
       });
     }));
   }
+
+
+  deleteAccountDailog() async {
+    await dialogAnimate(context,
+        StatefulBuilder(builder: (BuildContext context, StateSetter setStater) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setStater) {
+                return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                  content: Text(
+                    getTranslated(context, 'Delete Account') ?? 'Delete Account',
+                    style: Theme.of(this.context)
+                        .textTheme
+                        .subtitle1!
+                        .copyWith(color: Theme.of(context).colorScheme.fontColor),
+                  ),
+                  actions: <Widget>[
+                    new TextButton(
+                        child: Text(
+                          getTranslated(context, 'NO')!,
+                          style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                              color: Theme.of(context).colorScheme.lightBlack,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop(false);
+                        }),
+                    new TextButton(
+                        child: Text(
+                          getTranslated(context, 'YES')!,
+                          style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                              color: Theme.of(context).colorScheme.fontColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          deleteAccount(CUR_USERID);
+                          SettingProvider settingProvider =
+                          Provider.of<SettingProvider>(context, listen: false);
+                          settingProvider.clearUserSession(context);
+                          //favList.clear();
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              '/home', (Route<dynamic> route) => false);
+                        })
+                  ],
+                );
+              });
+        }));
+  }
+
 
   @override
   Widget build(BuildContext context) {

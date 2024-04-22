@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:eshop_multivendor/Screen/Add_Address.dart';
+import 'package:formbuzzuser/Screen/Add_Address.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -117,7 +117,7 @@ class _MapState extends State<Map> {
               ),
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: colors.primary),
+              style: ElevatedButton.styleFrom(backgroundColor: colors.primary),
               child: Text("Update Location",style: TextStyle(fontWeight: FontWeight.bold),),
               onPressed: () {
                 if (widget.from == getTranslated(context, 'ADDADDRESS')) {

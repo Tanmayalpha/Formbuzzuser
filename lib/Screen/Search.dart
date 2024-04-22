@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:eshop_multivendor/Helper/Session.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import '../Helper/AppBtn.dart';

@@ -3,11 +3,11 @@
 // import 'dart:io';
 //
 // import 'package:country_code_picker/country_code_picker.dart';
-// import 'package:eshop_multivendor/Helper/String.dart';
-// import 'package:eshop_multivendor/Helper/cropped_container.dart';
-// import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-// import 'package:eshop_multivendor/Screen/Privacy_Policy.dart';
-// import 'package:eshop_multivendor/Screen/Verify_Otp.dart';
+// import 'package:formbuzzuser/Helper/String.dart';
+// import 'package:formbuzzuser/Helper/cropped_container.dart';
+// import 'package:formbuzzuser/Provider/SettingProvider.dart';
+// import 'package:formbuzzuser/Screen/Privacy_Policy.dart';
+// import 'package:formbuzzuser/Screen/Verify_Otp.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
@@ -592,11 +592,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:eshop_multivendor/Helper/String.dart';
-import 'package:eshop_multivendor/Helper/cropped_container.dart';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Screen/Privacy_Policy.dart';
-import 'package:eshop_multivendor/Screen/Verify_Otp.dart';
+import 'package:formbuzzuser/Helper/String.dart';
+import 'package:formbuzzuser/Helper/cropped_container.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Screen/Privacy_Policy.dart';
+import 'package:formbuzzuser/Screen/Verify_Otp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

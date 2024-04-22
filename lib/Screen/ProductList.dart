@@ -2,13 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:eshop_multivendor/Helper/AppBtn.dart';
-import 'package:eshop_multivendor/Helper/Public%20Api/api.dart';
-import 'package:eshop_multivendor/Helper/SimBtn.dart';
-import 'package:eshop_multivendor/Helper/widgets.dart';
-import 'package:eshop_multivendor/Provider/CartProvider.dart';
-import 'package:eshop_multivendor/Provider/FavoriteProvider.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Helper/AppBtn.dart';
+import 'package:formbuzzuser/Helper/Public%20Api/api.dart';
+import 'package:formbuzzuser/Helper/SimBtn.dart';
+import 'package:formbuzzuser/Helper/widgets.dart';
+import 'package:formbuzzuser/Provider/CartProvider.dart';
+import 'package:formbuzzuser/Provider/FavoriteProvider.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -190,7 +190,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
         child: Center(
             child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: colors.primary,
+            backgroundColor: colors.primary,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(80.0)),
           ),

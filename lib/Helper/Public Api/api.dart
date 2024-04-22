@@ -1,9 +1,12 @@
 import 'dart:convert';
-import 'package:eshop_multivendor/Helper/widgets.dart';
-import 'package:eshop_multivendor/Model/SingleSellerModal.dart';
-import 'package:eshop_multivendor/Model/UpdateUserModels.dart';
-import 'package:eshop_multivendor/Model/UserDetails.dart';
+// import 'package:formbuzzuser/Helper/widgets.dart';
+// import 'package:formbuzzuser/Model/SingleSellerModal.dart';
+// import 'package:formbuzzuser/Model/UpdateUserModels.dart';
+// import 'package:formbuzzuser/Model/UserDetails.dart';
 import 'package:http/http.dart' as http;
+import '../../Model/SingleSellerModal.dart';
+import '../../Model/UpdateUserModels.dart';
+import '../../Model/UserDetails.dart';
 import '../Session.dart';
 import '../String.dart';
 
@@ -98,5 +101,24 @@ checkOnOff(sellerId) async{
     }
   } else {
     print("Error");
+  }
+}
+Future<String> deleteAccount(userId) async {
+  var header = headers;
+  var request = http.MultipartRequest('POST', getDeleteAccountApi);
+  request.fields.addAll({'user_id': userId});
+
+  request.headers.addAll(header);
+  print('delete-----${request}');
+  print(request.fields);
+  print(request.headers);
+  http.StreamedResponse response = await request.send();
+  print('response  $response');
+  if (response.statusCode == 200) {
+    print('mmmmmmmmmmmmm');
+    final data = await response.stream.bytesToString();
+    return json.decode(data)['message'];
+  } else {
+    return 'Unable to delete account';
   }
 }

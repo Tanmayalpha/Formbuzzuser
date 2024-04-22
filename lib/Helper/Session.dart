@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
-import 'package:eshop_multivendor/Screen/Cart.dart';
-import 'package:eshop_multivendor/Screen/Favorite.dart';
-import 'package:eshop_multivendor/Screen/Login.dart';
-import 'package:eshop_multivendor/Screen/Search.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Screen/Cart.dart';
+import 'package:formbuzzuser/Screen/Favorite.dart';
+import 'package:formbuzzuser/Screen/Login.dart';
+import 'package:formbuzzuser/Screen/Search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

@@ -1,5 +1,5 @@
-import 'package:eshop_multivendor/Helper/String.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Helper/String.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

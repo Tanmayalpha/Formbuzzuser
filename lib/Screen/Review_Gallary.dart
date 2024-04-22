@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Screen/Review_Preview.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Screen/Review_Preview.dart';
 import 'package:flutter/material.dart';
 
 import '../Model/Section_Model.dart';

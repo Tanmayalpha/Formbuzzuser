@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:eshop_multivendor/Helper/Color.dart';
-import 'package:eshop_multivendor/Helper/Constant.dart';
-import 'package:eshop_multivendor/Helper/PushNotificationService.dart';
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Helper/String.dart';
-import 'package:eshop_multivendor/Model/Section_Model.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
-import 'package:eshop_multivendor/Screen/Favorite.dart';
-import 'package:eshop_multivendor/Screen/Login.dart';
-import 'package:eshop_multivendor/Screen/MyProfile.dart';
-import 'package:eshop_multivendor/Screen/Product_Detail.dart';
+import 'package:formbuzzuser/Helper/Color.dart';
+import 'package:formbuzzuser/Helper/Constant.dart';
+import 'package:formbuzzuser/Helper/PushNotificationService.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Helper/String.dart';
+import 'package:formbuzzuser/Model/Section_Model.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Screen/Favorite.dart';
+import 'package:formbuzzuser/Screen/Login.dart';
+import 'package:formbuzzuser/Screen/MyProfile.dart';
+import 'package:formbuzzuser/Screen/Product_Detail.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -41,8 +41,8 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
   @override
   void initState() {
 
-    SystemChrome.setEnabledSystemUIOverlays(
-        [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.manual, overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
@@ -194,7 +194,7 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
                 actions: <Widget>[
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: colors.primary
+                        backgroundColor: colors.primary
                     ),
                     child: Text("YES"),
                     onPressed: () {
@@ -203,7 +203,7 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: colors.primary
+                        backgroundColor: colors.primary
                     ),
                     child: Text("NO"),
                     onPressed: () {

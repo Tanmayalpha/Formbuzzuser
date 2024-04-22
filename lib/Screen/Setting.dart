@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:eshop_multivendor/Helper/Color.dart';
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Screen/Privacy_Policy.dart';
+import 'package:formbuzzuser/Helper/Color.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Screen/Privacy_Policy.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import '../Helper/AppBtn.dart';

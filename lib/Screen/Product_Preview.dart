@@ -1,4 +1,4 @@
-import 'package:eshop_multivendor/Helper/Color.dart';
+import 'package:formbuzzuser/Helper/Color.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:video_player/video_player.dart';

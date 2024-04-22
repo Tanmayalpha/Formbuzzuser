@@ -1,4 +1,4 @@
-import 'package:eshop_multivendor/Helper/Session.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -91,7 +91,7 @@ class _ReferEarnState extends State<ReferEarn> {
                                 color: Theme.of(context).colorScheme.fontColor,
                               ),),),
                   onPressed: () {
-                    Clipboard.setData(new ClipboardData(text: REFER_CODE));
+                    Clipboard.setData(new ClipboardData(text: REFER_CODE ??""));
                     // setSnackbar('Refercode Copied to clipboard');
                     Fluttertoast.showToast(msg: 'Refercode Copied to clipboard',
                         backgroundColor: colors.primary

@@ -3,13 +3,13 @@
 // import 'dart:convert';
 // import 'dart:io';
 // import 'package:cached_network_image/cached_network_image.dart';
-// import 'package:eshop_multivendor/Helper/Constant.dart';
-// import 'package:eshop_multivendor/Helper/Public%20Api/api.dart';
-// import 'package:eshop_multivendor/Helper/Session.dart';
-// import 'package:eshop_multivendor/Helper/widgets.dart';
-// import 'package:eshop_multivendor/Provider/CartProvider.dart';
-// import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-// import 'package:eshop_multivendor/Provider/UserProvider.dart';
+// import 'package:formbuzzuser/Helper/Constant.dart';
+// import 'package:formbuzzuser/Helper/Public%20Api/api.dart';
+// import 'package:formbuzzuser/Helper/Session.dart';
+// import 'package:formbuzzuser/Helper/widgets.dart';
+// import 'package:formbuzzuser/Provider/CartProvider.dart';
+// import 'package:formbuzzuser/Provider/SettingProvider.dart';
+// import 'package:formbuzzuser/Provider/UserProvider.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_paystack/flutter_paystack.dart';
@@ -4147,16 +4147,16 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:eshop_multivendor/Helper/Constant.dart';
-import 'package:eshop_multivendor/Helper/Public%20Api/api.dart';
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Helper/widgets.dart';
-import 'package:eshop_multivendor/Provider/CartProvider.dart';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Helper/Constant.dart';
+import 'package:formbuzzuser/Helper/Public%20Api/api.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Helper/widgets.dart';
+import 'package:formbuzzuser/Provider/CartProvider.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_paystack/flutter_paystack.dart';
+// import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
@@ -4246,7 +4246,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
   TextEditingController promoC = new TextEditingController();
   TextEditingController noteC = new TextEditingController();
   StateSetter? checkoutState;
-  final paystackPlugin = PaystackPlugin();
+  // final paystackPlugin = PaystackPlugin();
   bool deliverable = false;
   bool saveLater = false, addCart = false;
   bool isOnOff = false;
@@ -6952,8 +6952,8 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
       placeOrder('');
     } else if (payMethod == getTranslated(context, 'RAZORPAY_LBL'))
       razorpayPayment();
-    else if (payMethod == getTranslated(context, 'PAYSTACK_LBL'))
-      paystackPayment(context);
+    // else if (payMethod == getTranslated(context, 'PAYSTACK_LBL'))
+    //   paystackPayment(context);
     else if (payMethod == getTranslated(context, 'FLUTTERWAVE_LBL'))
       flutterwavePayment();
     else if (payMethod == getTranslated(context, 'STRIPE_LBL'))
@@ -7450,37 +7450,37 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
     }
   }
 
-  paystackPayment(BuildContext context) async {
-    context.read<CartProvider>().setProgress(true);
-
-    String? email = context.read<SettingProvider>().email;
-
-    Charge charge = Charge()
-      ..amount = totalPrice.toInt()
-      ..reference = _getReference()
-      ..email = email;
-
-    try {
-      CheckoutResponse response = await paystackPlugin.checkout(
-        context,
-        method: CheckoutMethod.card,
-        charge: charge,
-      );
-      if (response.status) {
-        placeOrder(response.reference);
-      } else {
-        setSnackbar(response.message, _checkscaffoldKey);
-        if (mounted)
-          setState(() {
-            _placeOrder = true;
-          });
-        context.read<CartProvider>().setProgress(false);
-      }
-    } catch (e) {
-      context.read<CartProvider>().setProgress(false);
-      rethrow;
-    }
-  }
+  // paystackPayment(BuildContext context) async {
+  //   context.read<CartProvider>().setProgress(true);
+  //
+  //   String? email = context.read<SettingProvider>().email;
+  //
+  //   Charge charge = Charge()
+  //     ..amount = totalPrice.toInt()
+  //     ..reference = _getReference()
+  //     ..email = email;
+  //
+  //   try {
+  //     CheckoutResponse response = await paystackPlugin.checkout(
+  //       context,
+  //       method: CheckoutMethod.card,
+  //       charge: charge,
+  //     );
+  //     if (response.status) {
+  //       placeOrder(response.reference);
+  //     } else {
+  //       setSnackbar(response.message, _checkscaffoldKey);
+  //       if (mounted)
+  //         setState(() {
+  //           _placeOrder = true;
+  //         });
+  //       context.read<CartProvider>().setProgress(false);
+  //     }
+  //   } catch (e) {
+  //     context.read<CartProvider>().setProgress(false);
+  //     rethrow;
+  //   }
+  // }
 
   String _getReference() {
     String platform;

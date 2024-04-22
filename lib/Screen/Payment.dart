@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_paystack/flutter_paystack.dart';
+// import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -75,7 +75,7 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
   Animation? buttonSqueezeanimation;
   AnimationController? buttonController;
   bool _isNetworkAvail = true;
-  final plugin = PaystackPlugin();
+  // final plugin = PaystackPlugin();
 
   @override
   void initState() {
@@ -591,11 +591,11 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                 payment["direct_bank_transfer"] == "1" ? true : false;
 
             if (razorpay) razorpayId = payment["razorpay_key_id"];
-            if (paystack) {
-              paystackId = payment["paystack_key_id"];
-
-              plugin.initialize(publicKey: paystackId!);
-            }
+            // if (paystack) {
+            //   paystackId = payment["paystack_key_id"];
+            //
+            //   plugin.initialize(publicKey: paystackId!);
+            // }
             if (stripe) {
               stripeId = payment['stripe_publishable_key'];
               stripeSecret = payment['stripe_secret_key'];

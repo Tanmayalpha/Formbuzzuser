@@ -4,11 +4,11 @@ import 'dart:io';
 import 'dart:isolate';
 import 'dart:ui';
 import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+// import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:http/http.dart' as http;
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Helper/String.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Helper/String.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -45,7 +45,7 @@ class _ChatState extends State<Chat> {
     super.initState();
     downloadlist = new Map<String?, String>();
     CUR_TICK_ID = widget.id;
-    FlutterDownloader.registerCallback(downloadCallback);
+    // FlutterDownloader.registerCallback(downloadCallback);
     setupChannel();
 
     getMsg();
@@ -60,7 +60,7 @@ class _ChatState extends State<Chat> {
   }
 
   static void downloadCallback(
-      String id, DownloadTaskStatus status, int progress) {
+      String id, int status, int progress) {
     final SendPort send =
         IsolateNameServer.lookupPortByName('downloader_send_port')!;
     send.send([id, status, progress]);
@@ -220,49 +220,49 @@ class _ChatState extends State<Chat> {
     );
   }
 
-  void _requestDownload(String? url, String? mid) async {
-    bool checkpermission = await Checkpermission();
-    if (checkpermission) {
-      if (Platform.isIOS) {
-        Directory target = await getApplicationDocumentsDirectory();
-        _filePath = target.path.toString();
-      } else {
-        Directory? downloadsDirectory =
-            await (DownloadsPathProvider.downloadsDirectory);
-        _filePath = downloadsDirectory!.path.toString();
-      }
-
-      String fileName = url!.substring(url.lastIndexOf("/") + 1);
-      File file = new File(_filePath + "/" + fileName);
-      bool hasExisted = await file.exists();
-
-      if (downloadlist.containsKey(mid)) {
-        final tasks = await FlutterDownloader.loadTasksWithRawQuery(
-            query:
-                "SELECT status FROM task WHERE task_id=${downloadlist[mid]}");
-
-        if (tasks == 4 || tasks == 5) downloadlist.remove(mid);
-      }
-
-      if (hasExisted) {
-        final _openFile = await OpenFilex.open(_filePath + "/" + fileName);
-      } else if (downloadlist.containsKey(mid)) {
-        setSnackbar(getTranslated(context, 'Downloading')!);
-      } else {
-        setSnackbar(getTranslated(context, 'Downloading')!);
-        final taskid = await FlutterDownloader.enqueue(
-            url: url,
-            savedDir: _filePath,
-            headers: {"auth": "test_for_sql_encoding"},
-            showNotification: true,
-            openFileFromNotification: true);
-
-        setState(() {
-          downloadlist[mid] = taskid.toString();
-        });
-      }
-    }
-  }
+  // void _requestDownload(String? url, String? mid) async {
+  //   bool checkpermission = await Checkpermission();
+  //   if (checkpermission) {
+  //     if (Platform.isIOS) {
+  //       Directory target = await getApplicationDocumentsDirectory();
+  //       _filePath = target.path.toString();
+  //     } else {
+  //       Directory? downloadsDirectory =
+  //           await (DownloadsPathProvider.downloadsDirectory);
+  //       _filePath = downloadsDirectory!.path.toString();
+  //     }
+  //
+  //     String fileName = url!.substring(url.lastIndexOf("/") + 1);
+  //     File file = new File(_filePath + "/" + fileName);
+  //     bool hasExisted = await file.exists();
+  //
+  //     if (downloadlist.containsKey(mid)) {
+  //       final tasks = await FlutterDownloader.loadTasksWithRawQuery(
+  //           query:
+  //               "SELECT status FROM task WHERE task_id=${downloadlist[mid]}");
+  //
+  //       if (tasks == 4 || tasks == 5) downloadlist.remove(mid);
+  //     }
+  //
+  //     if (hasExisted) {
+  //       final _openFile = await OpenFilex.open(_filePath + "/" + fileName);
+  //     } else if (downloadlist.containsKey(mid)) {
+  //       setSnackbar(getTranslated(context, 'Downloading')!);
+  //     } else {
+  //       setSnackbar(getTranslated(context, 'Downloading')!);
+  //       final taskid = await FlutterDownloader.enqueue(
+  //           url: url,
+  //           savedDir: _filePath,
+  //           headers: {"auth": "test_for_sql_encoding"},
+  //           showNotification: true,
+  //           openFileFromNotification: true);
+  //
+  //       setState(() {
+  //         downloadlist[mid] = taskid.toString();
+  //       });
+  //     }
+  //   }
+  // }
 
   Future<bool> Checkpermission() async {
     var status = await Permission.storage.status;
@@ -491,7 +491,7 @@ class _ChatState extends State<Chat> {
 
                       GestureDetector(
                         onTap: () {
-                          _requestDownload(attach[index].media, message.id);
+                          // _requestDownload(attach[index].media, message.id);
                         },
                         child: type == "image"
                             ? Image.network(file,

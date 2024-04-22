@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
-import 'package:eshop_multivendor/Screen/PaypalWebviewActivity.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Screen/PaypalWebviewActivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_paystack/flutter_paystack.dart';
+// import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:http/http.dart';
 import 'package:paytm/paytm.dart';
 import 'package:provider/provider.dart';
@@ -70,7 +70,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
   int offset = 0;
   int total = 0;
   bool isLoadingmore = true, _isLoading = true, payTesting = true;
-  final paystackPlugin = PaystackPlugin();
+  // final paystackPlugin = PaystackPlugin();
 
   @override
   void initState() {
@@ -355,9 +355,9 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                         } else if (payMethod!.trim() ==
                             getTranslated(context, 'RAZORPAY_LBL')!.trim())
                           razorpayPayment(double.parse(amtC!.text));
-                        else if (payMethod!.trim() ==
-                            getTranslated(context, 'PAYSTACK_LBL')!.trim())
-                          paystackPayment(context, int.parse(amtC!.text));
+                        // else if (payMethod!.trim() ==
+                        //     getTranslated(context, 'PAYSTACK_LBL')!.trim())
+                        //   paystackPayment(context, int.parse(amtC!.text));
                         else if (payMethod == getTranslated(context, 'PAYTM_LBL'))
                           paytmPayment(double.parse(amtC!.text));
                         else if (payMethod ==
@@ -546,39 +546,39 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
   //   setSnackbar(response.message!);
   // }
 
-  paystackPayment(BuildContext context, int price) async {
-    if (mounted)
-      setState(() {
-        _isProgress = true;
-      });
-
-    String? email = context.read<UserProvider>().email;
-
-    Charge charge = Charge()
-      ..amount = price
-      ..reference = _getReference()
-      ..email = email;
-
-    try {
-      CheckoutResponse response = await paystackPlugin.checkout(
-        context,
-        method: CheckoutMethod.card,
-        charge: charge,
-      );
-      if (response.status) {
-        sendRequest(response.reference, "Paystack");
-      } else {
-        setSnackbar(response.message);
-        if (mounted)
-          setState(() {
-            _isProgress = false;
-          });
-      }
-    } catch (e) {
-      if (mounted) setState(() => _isProgress = false);
-      rethrow;
-    }
-  }
+  // paystackPayment(BuildContext context, int price) async {
+  //   if (mounted)
+  //     setState(() {
+  //       _isProgress = true;
+  //     });
+  //
+  //   String? email = context.read<UserProvider>().email;
+  //
+  //   Charge charge = Charge()
+  //     ..amount = price
+  //     ..reference = _getReference()
+  //     ..email = email;
+  //
+  //   try {
+  //     CheckoutResponse response = await paystackPlugin.checkout(
+  //       context,
+  //       method: CheckoutMethod.card,
+  //       charge: charge,
+  //     );
+  //     if (response.status) {
+  //       sendRequest(response.reference, "Paystack");
+  //     } else {
+  //       setSnackbar(response.message);
+  //       if (mounted)
+  //         setState(() {
+  //           _isProgress = false;
+  //         });
+  //     }
+  //   } catch (e) {
+  //     if (mounted) setState(() => _isProgress = false);
+  //     rethrow;
+  //   }
+  // }
 
   String _getReference() {
     String platform;
@@ -945,11 +945,11 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
             paytm = payment["paytm_payment_method"] == "1" ? true : false;
 
             if (razorpay!) razorpayId = payment["razorpay_key_id"];
-            if (paystack!) {
-              paystackId = payment["paystack_key_id"];
-
-              paystackPlugin.initialize(publicKey: paystackId!);
-            }
+            // if (paystack!) {
+            //   paystackId = payment["paystack_key_id"];
+            //
+            //    paystackPlugin.initialize(publicKey: paystackId!);
+            // }
             if (stripe!) {
               stripeId = payment['stripe_publishable_key'];
               stripeSecret = payment['stripe_secret_key'];

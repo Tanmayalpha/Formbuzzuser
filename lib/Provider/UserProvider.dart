@@ -1,4 +1,4 @@
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
 import 'package:flutter/material.dart';
 
 class UserProvider extends ChangeNotifier {

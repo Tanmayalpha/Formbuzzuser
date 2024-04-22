@@ -1,4 +1,4 @@
-name: eshop_multivendor
+name: formbuzzuser
 description: eShop Multivendor App.
 
 # The following line prevents the package from being accidentally published to
@@ -92,8 +92,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
+#  flutter_localizations:
+#    sdk: flutter
 dependency_overrides:
    modal_bottom_sheet: ^3.0.0-pre
 

@@ -1,6 +1,6 @@
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Helper/String.dart';
-import 'package:eshop_multivendor/Screen/SignInUpAcc.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Helper/String.dart';
+import 'package:formbuzzuser/Screen/SignInUpAcc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../Helper/AppBtn.dart';

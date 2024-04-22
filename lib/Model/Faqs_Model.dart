@@ -1,4 +1,4 @@
-import 'package:eshop_multivendor/Helper/String.dart';
+import 'package:formbuzzuser/Helper/String.dart';
 
 class FaqsModel {
   String? id, question,answer,status;

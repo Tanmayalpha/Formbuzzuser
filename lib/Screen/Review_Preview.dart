@@ -1,5 +1,5 @@
-import 'package:eshop_multivendor/Helper/Color.dart';
-import 'package:eshop_multivendor/Screen/Product_Detail.dart';
+import 'package:formbuzzuser/Helper/Color.dart';
+import 'package:formbuzzuser/Screen/Product_Detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:photo_view/photo_view.dart';

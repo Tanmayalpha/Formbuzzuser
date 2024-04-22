@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
-import 'package:eshop_multivendor/Helper/Constant.dart';
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Screen/Map.dart';
+import 'package:formbuzzuser/Helper/Constant.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Screen/Map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -1623,7 +1623,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
         ),
         child: SwitchListTile(
           value: checkedDefault,
-          activeColor: Theme.of(context).accentColor,
+          activeColor: Theme.of(context).hintColor,
           dense: true,
           onChanged: (newValue) {
             if (mounted) {
@@ -1738,6 +1738,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
 
     List<Placemark> placemark = await placemarkFromCoordinates(
         double.parse(latitude!), double.parse(longitude!),
+
         localeIdentifier: "en");
 
     state = placemark[0].administrativeArea;
