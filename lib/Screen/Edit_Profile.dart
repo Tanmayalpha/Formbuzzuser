@@ -1,16 +1,15 @@
 import 'dart:io';
-import 'dart:math';
 
-import 'package:eshop_multivendor/Helper/Color.dart';
-import 'package:eshop_multivendor/Helper/Constant.dart';
-import 'package:eshop_multivendor/Helper/Public%20Api/api.dart';
-import 'package:eshop_multivendor/Helper/widgets.dart';
-import 'package:eshop_multivendor/Model/UpdateUserModels.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:formbuzzuser/Helper/Color.dart';
+import 'package:formbuzzuser/Helper/Constant.dart';
+import 'package:formbuzzuser/Helper/Public%20Api/api.dart';
+import 'package:formbuzzuser/Helper/widgets.dart';
+import 'package:formbuzzuser/Model/UpdateUserModels.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -317,7 +316,7 @@ class _EditProfileState extends State<EditProfile> {
               ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
-                  primary: Colors.black, // button text color
+                  foregroundColor: Colors.black, // button text color
                 ),
               ),
             ),

@@ -3,32 +3,33 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:eshop_multivendor/Helper/ApiBaseHelper.dart';
-import 'package:eshop_multivendor/Helper/AppBtn.dart';
-import 'package:eshop_multivendor/Helper/Color.dart';
-import 'package:eshop_multivendor/Helper/Constant.dart';
-import 'package:eshop_multivendor/Helper/Session.dart';
-import 'package:eshop_multivendor/Helper/SimBtn.dart';
-import 'package:eshop_multivendor/Helper/String.dart';
-import 'package:eshop_multivendor/Helper/widgets.dart';
-import 'package:eshop_multivendor/Model/Model.dart';
-import 'package:eshop_multivendor/Model/Section_Model.dart';
-import 'package:eshop_multivendor/Provider/CartProvider.dart';
-import 'package:eshop_multivendor/Provider/CategoryProvider.dart';
-import 'package:eshop_multivendor/Provider/FavoriteProvider.dart';
-import 'package:eshop_multivendor/Provider/HomeProvider.dart';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
-import 'package:eshop_multivendor/Screen/SellerList.dart';
-import 'package:eshop_multivendor/Screen/Seller_Details.dart';
-import 'package:eshop_multivendor/Screen/SubCategory.dart';
+
 import 'package:flutter/material.dart';
+import 'package:formbuzzuser/Helper/ApiBaseHelper.dart';
+import 'package:formbuzzuser/Helper/AppBtn.dart';
+import 'package:formbuzzuser/Helper/Color.dart';
+import 'package:formbuzzuser/Helper/Constant.dart';
+import 'package:formbuzzuser/Helper/Session.dart';
+import 'package:formbuzzuser/Helper/SimBtn.dart';
+import 'package:formbuzzuser/Helper/String.dart';
+import 'package:formbuzzuser/Helper/widgets.dart';
+import 'package:formbuzzuser/Model/Model.dart';
+import 'package:formbuzzuser/Model/Section_Model.dart';
+import 'package:formbuzzuser/Provider/CartProvider.dart';
+import 'package:formbuzzuser/Provider/CategoryProvider.dart';
+import 'package:formbuzzuser/Provider/FavoriteProvider.dart';
+import 'package:formbuzzuser/Provider/HomeProvider.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Screen/SellerList.dart';
+import 'package:formbuzzuser/Screen/Seller_Details.dart';
+import 'package:formbuzzuser/Screen/SubCategory.dart';
 import 'package:http/http.dart';
 import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:version/version.dart';
+import '../Provider/UserProvider.dart';
 import 'Login.dart';
 import 'ProductList.dart';
 import 'Product_Detail.dart';
@@ -1170,7 +1171,7 @@ String? pincode ;
           var data = getdata["data"];
 
           List<SectionModel> cartList = (data as List)
-              .map((data) => new SectionModel.fromCart(data))
+              .map((data) =>  SectionModel.fromCart(data))
               .toList();
           context.read<CartProvider>().setCartlist(cartList);
         }

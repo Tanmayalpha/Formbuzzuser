@@ -2,17 +2,17 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'package:eshop_multivendor/Helper/String.dart';
-import 'package:eshop_multivendor/Helper/cropped_container.dart';
-import 'package:eshop_multivendor/Model/User.dart';
-import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
-import 'package:eshop_multivendor/Screen/Login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:formbuzzuser/Helper/String.dart';
+import 'package:formbuzzuser/Helper/cropped_container.dart';
+import 'package:formbuzzuser/Model/User.dart';
+import 'package:formbuzzuser/Provider/SettingProvider.dart';
+import 'package:formbuzzuser/Provider/UserProvider.dart';
+import 'package:formbuzzuser/Screen/Login.dart';
 import 'package:http/http.dart';
 import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 import 'package:place_picker/entities/location_result.dart';
@@ -1078,7 +1078,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                primary: Colors.black, // button text color
+                foregroundColor: Colors.black, // button text color
               ),
             ),
           ),
@@ -1098,10 +1098,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
     LocationResult result = await Navigator.of(context).push(
         MaterialPageRoute(
             builder: (context) =>
-                PlacePicker(
-
-
-                    "AIzaSyDPsdTq-a4AHYHSNvQsdAlZgWvRu11T9pM"))
+                PlacePicker("AIzaSyAHshmjk77VCJ6u9LrTOGih-fZw4GgW1PI"))
 
     );
 
@@ -1176,9 +1173,9 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
                   ),
                   Divider(color: Theme.of(context).colorScheme.lightBlack),
                   pinLoading
-                      ? Center(
+                      ? const Center(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 50.0),
+                      padding: EdgeInsets.symmetric(vertical: 50.0),
                       child: CircularProgressIndicator(),
                     ),
                   )
@@ -1236,7 +1233,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 pinSearchLIst[index].zipCode ?? '',
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
           ),
@@ -1280,7 +1277,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
         print('${getdata["data"]}');
 
         pinList =
-            (data as List).map((data) => new User.fromJson(data)).toList();
+            (data as List).map((data) =>  User.fromJson(data)).toList();
 
         pinSearchLIst.addAll(pinList);
       } else {

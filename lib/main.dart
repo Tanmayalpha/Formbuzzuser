@@ -1,20 +1,18 @@
-import 'package:country_code_picker/country_localizations.dart';
-import 'package:eshop_multivendor/Helper/Color.dart';
-import 'package:eshop_multivendor/Helper/Constant.dart';
-import 'package:eshop_multivendor/Provider/CartProvider.dart';
-import 'package:eshop_multivendor/Provider/CategoryProvider.dart';
-import 'package:eshop_multivendor/Provider/FavoriteProvider.dart';
-import 'package:eshop_multivendor/Provider/HomeProvider.dart';
-import 'package:eshop_multivendor/Provider/ProductDetailProvider.dart';
-import 'package:eshop_multivendor/Provider/UserProvider.dart';
-import 'package:eshop_multivendor/Screen/Splash.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:formbuzzuser/Helper/Color.dart';
+import 'package:formbuzzuser/Helper/Constant.dart';
+import 'package:formbuzzuser/Provider/CartProvider.dart';
+import 'package:formbuzzuser/Provider/CategoryProvider.dart';
+import 'package:formbuzzuser/Provider/FavoriteProvider.dart';
+import 'package:formbuzzuser/Provider/HomeProvider.dart';
+import 'package:formbuzzuser/Provider/ProductDetailProvider.dart';
+import 'package:formbuzzuser/Screen/Splash.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,6 +22,7 @@ import 'Helper/Session.dart';
 import 'Helper/String.dart';
 import 'Provider/Theme.dart';
 import 'Provider/SettingProvider.dart';
+import 'Provider/UserProvider.dart';
 import 'Provider/order_provider.dart';
 import 'Screen/Dashboard.dart';
 import 'Screen/SignUp.dart';
@@ -33,7 +32,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _requestLocationPermission();
   await Firebase.initializeApp();
-  initializedDownload();
+  //initializedDownload();
   FirebaseMessaging.onBackgroundMessage(myForgroundMessageHandler);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -89,7 +88,7 @@ Future<void> _requestLocationPermission() async {
   }
 }
 Future<void> initializedDownload() async {
-  await FlutterDownloader.initialize(debug: false);
+ // await FlutterDownloader.initialize(debug: false);
 }
 
 final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
@@ -234,7 +233,7 @@ class _MyAppState extends State<MyApp> {
               toggleableActiveColor: colors.primary,
               fontFamily: 'opensans',
               brightness: Brightness.dark,
-              accentColor: colors.darkIcon,
+              hintColor: colors.darkIcon,
               iconTheme:
                   Theme.of(context).iconTheme.copyWith(color: colors.secondary),
               textTheme: TextTheme(
