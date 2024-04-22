@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:formbuzzuser/Provider/UserProvider.dart';
@@ -225,7 +226,7 @@ getSimpleAppBar(
         margin: EdgeInsets.all(10),
         child: InkWell(
           borderRadius: BorderRadius.circular(4),
-          onTap: () => Navigator.of(context).pop(),
+          onTap: () => Navigator.of(context).pop(true),
           child: Center(
             child: Icon(
               Icons.arrow_back_ios_rounded,
@@ -251,6 +252,7 @@ noIntImage() {
 }
 
 setSnackbar(String msg, BuildContext context) {
+  print("$msg" + 'Snakbar');
   ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
     duration: Duration(seconds: 1),
     content: new Text(
@@ -592,7 +594,7 @@ String getToken() {
       issuedAt: DateTime.now().toUtc());
 
   String token = issueJwtHS256(claimSet, jwtKey);
-  print("token : $token ");
+  log("token : $token ");
 
   return token;
 }

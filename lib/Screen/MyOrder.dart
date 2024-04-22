@@ -33,6 +33,7 @@ int total = 0;
 int pos = 0;
 var userLat;
 var userLang;
+
 class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String? searchText;
@@ -102,7 +103,6 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
         offset = 0;
         getOrder();
       }
-
     });
 
     super.initState();
@@ -234,7 +234,7 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
                             ? Center(
                                 child: Text(getTranslated(context, 'noItem')!))
                             : RefreshIndicator(
-                                 color: colors.primary,
+                                color: colors.primary,
                                 key: _refreshIndicatorKey,
                                 onRefresh: _refresh,
                                 child: ListView.builder(
@@ -316,6 +316,7 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
               LIMIT: perPage.toString(),
               SEARCH: _searchText.trim(),
             };
+            print("Paremeters: $parameter");
             if (activeStatus != null) {
               if (activeStatus == awaitingPayment) activeStatus = "awaiting";
               parameter[ACTIVE_STATUS] = activeStatus;
@@ -343,8 +344,8 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
               var data = getdata["data"];
 
               if (data.length != 0) {
-                userLat=data[0]['latitude'];
-                userLang=data[0]['longitude'];
+                userLat = data[0]['latitude'];
+                userLang = data[0]['longitude'];
                 List<OrderModel> items = [];
                 List<OrderModel> allitems = [];
 
@@ -523,14 +524,18 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
             final result = await Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => OrderDetail(model: searchList[index],userLat: userLat,userLang: userLang,)),
+                  builder: (context) => OrderDetail(
+                        model: searchList[index],
+                        userLat: userLat,
+                        userLang: userLang,
+                      )),
             );
             print("Back My order List : $result");
-            if (mounted&&result == "update") {
+            if (mounted && result == "update") {
               print("Order List Data-------------: $result");
               setState(() {
                 _isLoading = true;
-                isLoadingmore  =true;
+                isLoadingmore = true;
                 offset = 0;
                 total = 0;
                 searchList.clear();

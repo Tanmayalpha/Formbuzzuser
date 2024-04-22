@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'package:formbuzzuser/Helper/String.dart';
-import 'package:formbuzzuser/Helper/cropped_container.dart';
-import 'package:formbuzzuser/Model/User.dart';
-import 'package:formbuzzuser/Provider/SettingProvider.dart';
-import 'package:formbuzzuser/Provider/UserProvider.dart';
-import 'package:formbuzzuser/Screen/Login.dart';
+import 'package:eshop_multivendor/Helper/String.dart';
+import 'package:eshop_multivendor/Helper/cropped_container.dart';
+import 'package:eshop_multivendor/Model/User.dart';
+import 'package:eshop_multivendor/Provider/SettingProvider.dart';
+import 'package:eshop_multivendor/Provider/UserProvider.dart';
+import 'package:eshop_multivendor/Screen/Login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,8 +17,6 @@ import 'package:http/http.dart';
 import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 import 'package:place_picker/entities/location_result.dart';
 import 'package:place_picker/widgets/place_picker.dart';
-// import 'package:place_picker/entities/location_result.dart';
-// import 'package:place_picker/widgets/place_picker.dart';
 import 'package:provider/provider.dart';
 import '../Helper/AppBtn.dart';
 import '../Helper/Color.dart';
@@ -1080,7 +1078,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: Colors.black, // button text color
+                primary: Colors.black, // button text color
               ),
             ),
           ),
@@ -1101,10 +1099,9 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
         MaterialPageRoute(
             builder: (context) =>
                 PlacePicker(
-                    "AIzaSyAHshmjk77VCJ6u9LrTOGih-fZw4GgW1PI")
-            // PlacePicker(
-            //         "AIzaSyDPsdTq-a4AHYHSNvQsdAlZgWvRu11T9pM")
-        )
+
+
+                    "AIzaSyDPsdTq-a4AHYHSNvQsdAlZgWvRu11T9pM"))
 
     );
 

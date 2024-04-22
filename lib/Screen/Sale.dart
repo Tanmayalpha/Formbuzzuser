@@ -518,7 +518,6 @@ class _SaleState extends State<Sale>
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 crossAxisCount: length == 4 ? 2 : 3,
                 shrinkWrap: true,
-
                 childAspectRatio: 1.0,
                 physics: NeverScrollableScrollPhysics(),
                 mainAxisSpacing: 10,
@@ -549,7 +548,6 @@ class _SaleState extends State<Sale>
                         shrinkWrap: true,
                         childAspectRatio: 1.2,
                         crossAxisSpacing: 10,
-
                         mainAxisSpacing: 10,
                         physics: NeverScrollableScrollPhysics(),
                         children: List.generate(
@@ -696,6 +694,7 @@ class _SaleState extends State<Sale>
   }
 
   void getSection() {
+    print("Disc: ${disList[curDis].toString()}");
     Map parameter = {
       PRODUCT_LIMIT: "6",
       PRODUCT_OFFSET: "0",
