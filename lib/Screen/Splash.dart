@@ -38,30 +38,20 @@ class _SplashScreen extends State<Splash> {
     //  SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
       key: _scaffoldKey,
-      body: Stack(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: back(),
-            child: Center(
-              child: Center(
-                  child: Image.asset("assets/images/splashlogo.jpeg",
-                      fit: BoxFit.cover)),
-              // child: Image.asset(
-              //   'assets/images/splashlogo.png',
-              //   width: 250,
-              //   height: 250,
-              // ),
-            ),
-          ),
-          // Image.asset(
-          //   'assets/images/doodle.png',
-          //   fit: BoxFit.fill,
-          //   width: double.infinity,
-          //   height: double.infinity,
+      body: Container(
+        // width: double.infinity,
+        // height: double.infinity,
+        // decoration: back(),
+        child: Center(
+          child: Center(
+              child: Image.asset("assets/images/splash.jpeg",
+                  fit: BoxFit.cover)),
+          // child: Image.asset(
+          //   'assets/images/splashlogo.png',
+          //   width: 250,
+          //   height: 250,
           // ),
-        ],
+        ),
       ),
     );
   }
