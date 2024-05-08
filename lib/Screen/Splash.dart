@@ -45,19 +45,22 @@ class _SplashScreen extends State<Splash> {
             height: double.infinity,
             decoration: back(),
             child: Center(
-              child: Image.asset(
-                'assets/images/splashlogo.png',
-                width: 250,
-                height: 250,
-              ),
+              child: Center(
+                  child: Image.asset("assets/images/splashlogo.jpeg",
+                      fit: BoxFit.cover)),
+              // child: Image.asset(
+              //   'assets/images/splashlogo.png',
+              //   width: 250,
+              //   height: 250,
+              // ),
             ),
           ),
-          Image.asset(
-            'assets/images/doodle.png',
-            fit: BoxFit.fill,
-            width: double.infinity,
-            height: double.infinity,
-          ),
+          // Image.asset(
+          //   'assets/images/doodle.png',
+          //   fit: BoxFit.fill,
+          //   width: double.infinity,
+          //   height: double.infinity,
+          // ),
         ],
       ),
     );
