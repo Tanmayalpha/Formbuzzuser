@@ -1089,9 +1089,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
 
   void showPlacePicker() async {
     LocationResult result = await Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => PlacePicker("")));
-
-    // Check if the user picked a place
+        .push(MaterialPageRoute(builder: (context) => PlacePicker("AIzaSyCPQrw8wzaxAoyt15yFPXSnc1YSSdzek8U")));
     if (result != null) {
       setState(() {
         citycontroller.text = result.city!.name.toString();
