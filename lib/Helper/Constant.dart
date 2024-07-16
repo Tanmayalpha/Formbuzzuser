@@ -18,7 +18,6 @@ const int perPage = 10;
 final String baseUrl = 'https://admin.farmbuz.com/app/v1/api/';
 // final String baseUrl = 'https://developmentalphawizz.com/farmbuz/app/v1/api/';
 
-// final String imageUrl = 'https://developmentalphawizz.com/jmd_ganaadi/';
 final String imageUrl = 'https://admin.farmbuz.com/';
 
 final String jwtKey = "e1e421dceee9ea718ab764ea4fdef95629e7f415";

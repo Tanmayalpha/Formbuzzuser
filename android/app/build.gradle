@@ -63,6 +63,9 @@ android {
         release {
             signingConfig signingConfigs.release
         }
+        release {
+            crunchPngs false // or true
+        }
     }
     android {
         lintOptions {
@@ -70,7 +73,6 @@ android {
             checkReleaseBuilds false //<- add this line
         }
     }
-
 }
 flutter {
     source '../..'
