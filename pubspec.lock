@@ -162,7 +162,7 @@ packages:
     source: hosted
     version: "0.3.3+8"
   crypto:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto
       sha256: ff625774173754681d66daaf4a448684fb04b78f902da9cb3d308c19cc5e8bab
@@ -989,6 +989,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
+  phonepe_payment_sdk:
+    dependency: "direct main"
+    description:
+      name: phonepe_payment_sdk
+      sha256: "389340b35c31d02f7def81be76aa61f0297aa7e1b9f57308aefbe98adbc8cfa5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   photo_view:
     dependency: "direct main"
     description:

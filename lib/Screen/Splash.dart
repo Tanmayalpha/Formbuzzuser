@@ -14,6 +14,8 @@ class Splash extends StatefulWidget {
   _SplashScreen createState() => _SplashScreen();
 }
 
+String transactionId = "";
+
 class _SplashScreen extends State<Splash> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -44,8 +46,8 @@ class _SplashScreen extends State<Splash> {
         // decoration: back(),
         child: Center(
           child: Center(
-              child: Image.asset("assets/images/splash.jpeg",
-                  fit: BoxFit.cover)),
+              child:
+                  Image.asset("assets/images/splash.jpeg", fit: BoxFit.cover)),
           // child: Image.asset(
           //   'assets/images/splashlogo.png',
           //   width: 250,

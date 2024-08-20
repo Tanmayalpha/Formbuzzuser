@@ -38,7 +38,6 @@ bool codAllowed = true;
 String? bankName, bankNo, acName, acNo, exDetails;
 
 class StatePayment extends State<Payment> with TickerProviderStateMixin {
-
   bool _isLoading = true;
   String? startingDate;
 
@@ -64,7 +63,7 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
     'assets/images/cod.svg',
     'assets/images/paypal.svg',
     'assets/images/payu.svg',
-    'assets/images/rozerpay.svg',
+    'assets/images/phonepe.svg',
     'assets/images/paystack.svg',
     'assets/images/flutterwave.svg',
     'assets/images/stripe.svg',
@@ -160,7 +159,6 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       key: _scaffoldKey,
       appBar: getSimpleAppBar(getTranslated(context, 'PAYMENT_METHOD_LBL')!,
@@ -507,12 +505,13 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
         Response response =
             await post(getSettingApi, body: parameter, headers: headers)
                 .timeout(Duration(seconds: timeOut));
-         print("Api Working ${getSettingApi.toString()}");
-         print(parameter.toString());
+        print("Api Working ${getSettingApi.toString()}");
+        print(parameter.toString());
 
         if (response.statusCode == 200) {
           var getdata = json.decode(response.body);
 
+          print("object PAYMENT_METHOD $getdata");
           bool error = getdata["error"];
           // String msg = getdata["message"];
           if (!error) {
@@ -667,7 +666,7 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
           setState(() {
             selectedMethod = index;
             payMethod = paymentMethodList[selectedMethod!];
-
+            print("object payMethod $payMethod");
             payModel.forEach((element) => element.isSelected = false);
             payModel[index].isSelected = true;
           });

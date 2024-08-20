@@ -19,9 +19,7 @@ class RadioItem extends StatelessWidget {
             height: 20.0,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _item.isSelected!
-                    ? colors.primary
-                    : colors.whiteTemp,
+                color: _item.isSelected! ? colors.primary : colors.whiteTemp,
                 border: Border.all(color: colors.blackTemp)),
             child: Padding(
               padding: const EdgeInsets.all(2.0),
@@ -44,9 +42,13 @@ class RadioItem extends StatelessWidget {
           ),
           Spacer(),
           _item.img != ""
-              ? SvgPicture.asset(
-                  _item.img!,
-
+              ? Container(
+                  height: 30,
+                  width: 30,
+                  child: SvgPicture.asset(
+                    _item.img!,
+                    fit: BoxFit.fill,
+                  ),
                 )
               : Container()
         ],
